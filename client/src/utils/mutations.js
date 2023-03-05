@@ -21,20 +21,19 @@ export const LOGIN_USER = gql`
                 _id
                 username
                 email
+                }
             }
         }
-    }
-`;
+    `;
 
-export const SAVE_BOOK = gql`
-mutation saveBook($bookId: String!, $description: String!, $title: String!) {
-    saveBook(bookId: $bookId, description: $description, title: $title) {
-        _id
-        username
-        email
+    export const SAVE_BOOK = gql`
+    mutation saveBook($bookId: String!, $description: String!, $title: String!) {
+        saveBook(bookId: $bookId, description: $description, title: $title) {
+            _id
+            username
+            email
         }
     }
-}
 `;
 
 export const REMOVE_BOOK = gql`
@@ -43,7 +42,6 @@ export const REMOVE_BOOK = gql`
             _id
             username
             email
-            }
         }
     }
 `;
