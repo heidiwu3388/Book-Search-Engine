@@ -14,21 +14,23 @@ import { REMOVE_BOOK } from "../utils/mutations";
 const SavedBooks = () => {
   const { data, loading } = useQuery(QUERY_ME);
   var userData = data?.me || {};
-  
   const [removeBook] = useMutation(REMOVE_BOOK);
-  function handleDeleteBook(bookId) {
-    removeBook({
-      variables: {bookId: bookId}
-    });
-    removeBookId(bookId);
-  };
+
+  async function handleDeleteBook(bookId) {
+    try {
+      await removeBook({
+        variables: {bookId: bookId}
+      });
+      removeBookId(bookId);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   if (loading) {
-    console.log("inside if (loading)");
     return <h2>LOADING...</h2>;
   }
 
-  console.log("return JSX");
   return (
     <>
       <Jumbotron fluid className="text-light bg-dark">
