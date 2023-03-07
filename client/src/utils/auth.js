@@ -12,7 +12,14 @@ class AuthService {
   loggedIn() {
     // Checks if there is a saved token and it's still valid
     const token = this.getToken();
-    return !!token && !this.isTokenExpired(token); // handwaiving here
+    if (!token) {
+      return false;
+    } else if (this.isTokenExpired(token)) {
+      localStorage.removeItem('id_token');
+      return false;
+    } else {
+      return true;
+    }
   }
 
   // check if token is expired
