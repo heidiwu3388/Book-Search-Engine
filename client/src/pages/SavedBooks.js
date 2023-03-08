@@ -51,11 +51,13 @@ const SavedBooks = () => {
             return (
               <Card key={book.bookId} border="dark">
                 {book.image ? (
-                  <Card.Img
-                    src={book.image}
-                    alt={`The cover for ${book.title}`}
-                    variant="top"
-                  />
+                  <Card.Link href={book.link} target="_blank" rel="noreferrer">
+                    <Card.Img
+                      src={book.image}
+                      alt={`The cover for ${book.title}`}
+                      variant="top"
+                    />
+                  </Card.Link>
                 ) : null}
                 <Card.Body>
                   <Card.Title>{book.title}</Card.Title>
